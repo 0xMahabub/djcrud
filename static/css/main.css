@@ -1,0 +1,9 @@
+body {
+    font-family: Tahoma;
+    font-weight: 400;
+    color: #353535;
+}
+
+.min75h {
+    min-height: 75vh !important;
+}
