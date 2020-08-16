@@ -9,15 +9,18 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-from pathlib import Path
+
+# from pathlib import Path
 
 
-# support for Heroku-deploy
-# import django_heroku
+# # support for Heroku-deploy
+# # import django_heroku
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+# # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -81,7 +84,7 @@ WSGI_APPLICATION = 'hellodj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -125,11 +128,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Heroku support
-
-# django_heroku.setting(locals())
-
-# added by me
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    # '/var/www/static/',
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
